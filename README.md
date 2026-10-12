@@ -12,4 +12,6 @@ Point prévu : GET /health
 Contact : equipe-a@example.invalid
 
 ## Support
-Contact : equipe-a@example.invalid
+Contact équipe A : equipe-a@example.invalid
+
+Contact équipe B : equipe-b@example.invalid
