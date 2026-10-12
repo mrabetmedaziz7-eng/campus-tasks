@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 set -u
 
@@ -5,6 +6,7 @@ errors=0
 required=(README.md .gitignore .env.example docs/api.md docs/setup.md)
 
 echo "[CHECK] Campus Tasks"
+
 for file in "${required[@]}"; do
   if [[ -f "$file" ]]; then
     echo "[OK] $file"
@@ -21,6 +23,13 @@ else
   echo "[OK] aucun .env suivi"
 fi
 
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "[ERREUR] des modifications ne sont pas validées (commit manquant)" >&2
+  errors=$((errors + 1))
+else
+  echo "[OK] dépôt propre"
+fi
+
 if [[ $errors -gt 0 ]]; then
   echo "[ECHEC] $errors erreur(s)" >&2
   exit 1
@@ -28,3 +37,4 @@ fi
 
 echo "[SUCCES] contrôles validés"
 exit 0
+
