@@ -1,0 +1,5 @@
+services:
+  api:
+    image: ghcr.io/mrabetmedaziz7-eng/campus-tasks:${IMAGE_TAG}
+    ports: ["8083:8080"] # 8083 (PC) -> 8080 (conteneur)
+    restart: unless-stopped
